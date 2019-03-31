@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel='stylesheet' href='index.css'>
+    <title>Document</title>
+</head>
+<body>
+
+
+    <script>
+        
+        //Global variables
+        var ronda = 0;
+        var myScore = 0;
+        var computerScore = 0;
+
+        //Calling the functions
+        game(ronda);
+
+        //Function declarations
+        function computerPlay(){
+        var computerTry = Math.floor(Math.random() * 3);
+      
+            if (computerTry===0){
+                return "rock"
+            }
+            else if (computerTry===1){
+                return "paper"
+            }
+            else if (computerTry===2){
+                return "scissors"
+            }
+        }
+
+        
+        function playRound(playerSelection, computerSelection){
+            console.log("Usted saco:", playerSelection)
+            console.log("La PC saco:", computerSelection)
+
+            if(playerSelection==="rock" && computerSelection==="paper"){
+                
+                return "computer win!";
+            }
+
+            if(playerSelection==="rock" && computerSelection==="scissors"){
+                
+                return "you win!";
+                
+            }
+
+
+            if(playerSelection==="scissors" && computerSelection==="rock"){
+                
+                return "computer win!";
+            }
+
+            if(playerSelection==="scissors" && computerSelection==="paper"){
+                
+                return "you win!";
+
+            }
+
+            if(playerSelection==="paper" && computerSelection==="scissors"){
+                return "computer win!";
+            }
+
+            if(playerSelection==="paper" && computerSelection==="rock"){
+                return "you win!";
+            }
+
+            else {
+                return "Tie!";
+            }
+        }
+
+        function game(ronda){
+            if(ronda <= 4){
+                var playUser = prompt("Type rock, paper, or scissors");
+                    playUser = playUser.toLowerCase();
+                var result = playRound(playUser, computerPlay());
+                console.log(result);
+
+                if (result === "you win!"){
+                    myScore++
+                }
+
+                if(result === "computer win!"){
+                    computerScore++
+                }
+
+                console.log("This is my score:" + myScore)
+                console.log("This is the computer's score:" + computerScore)
+
+                ronda++
+                game(ronda);
+            }
+            
+            else{
+                if(myScore>computerScore){
+                    console.log("you win!")
+                } 
+
+                if(computerScore>myScore){
+                    console.log("computer win!")
+                }
+            }
+        }
+    </script>
+</body>
+</html>
